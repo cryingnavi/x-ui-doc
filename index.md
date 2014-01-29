@@ -6,6 +6,7 @@ tagline:
 {% include JB/setup %}
 
 # 개요
+HTML 5, CSS 3 기반의 작은 UI FrameWork 입니다. 
 
 
 <!--
