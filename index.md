@@ -1,7 +1,7 @@
 ---
 layout: page
 title: x-ui
-tagline: Supporting tagline
+tagline: 
 ---
 {% include JB/setup %}
 
