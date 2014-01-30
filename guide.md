@@ -165,11 +165,17 @@ X.View 의 프로퍼티로 추가할 수 있는 util입니다. 해당 view의 �
 
 ```javascript
 var view = new X.View({
-	el: "#id",
+	el: "#detail-container",
 	autoRender: true,
 	viewController: new X.util.RemoteViewController({
 		initPage: "a.html"
 	})
 });
+```
+
+```html
+<div data-ui="view" data-scroll="false" id="detail-container">
+	        
+</div>
 ```
 
