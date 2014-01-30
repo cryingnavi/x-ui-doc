@@ -160,3 +160,6 @@ var view = new X.View({
 	</div>
 </div>
 
+## X.util.ViewController
+X.View 의 프로퍼티로 추가할 수 있는 util입니다. 해당 view의 화면 전환 및 히스토리를 관리하게 됩니다. 예를 들어 view의 내용을 a.html 의 내용으로 채우고 싶고 이를 다시 a.html -> b.html 로 화면이 전환된다면 viewController를 선언하여 추가함을써 이룰 수 있습니다.
+
