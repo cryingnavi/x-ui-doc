@@ -1,11 +1,11 @@
 
-http://username.github.io/archive.html
-http://username.github.io/atom.xml
-http://username.github.io/categories.html
-http://username.github.io/index.html
-http://username.github.io/pages.html
-http://username.github.io/rss.xml
-http://username.github.io/sitemap.txt
-http://username.github.io/tags.html
+http://cryingnavi.github.io/atom.xml
+http://cryingnavi.github.io/example.html
+http://cryingnavi.github.io/guide.html
+http://cryingnavi.github.io/history.html
+http://cryingnavi.github.io/index.html
+http://cryingnavi.github.io/pages.html
+http://cryingnavi.github.io/rss.xml
+http://cryingnavi.github.io/sitemap.txt
 
-http://username.github.io/lessons/2011/12/29/jekyll-introduction
+http://cryingnavi.github.io/lessons/2011/12/29/jekyll-introduction

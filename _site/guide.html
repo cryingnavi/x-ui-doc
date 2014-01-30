@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Pages</title>
+    <title>Guide</title>
     
     <meta name="author" content="heo young nam">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -56,7 +56,7 @@
     
       
       	
-      	<li><a href="/guide.html">Guide</a></li>
+      	<li class="active"><a href="/guide.html" class="active">Guide</a></li>
       	
       
     
@@ -76,7 +76,7 @@
     
       
       	
-      	<li class="active"><a href="/pages.html" class="active">Pages</a></li>
+      	<li><a href="/pages.html">Pages</a></li>
       	
       
     
@@ -99,89 +99,56 @@
     <div class="container">
       
 <div class="page-header">
-  <h1>Pages </h1>
+  <h1>Guide </h1>
 </div>
 
 <div class="row">
   <div class="col-xs-12">
-      
+      <h2 id="application_">Application 생성하기</h2>
 
-<h2>All Pages</h2>
-<ul>
+<pre class="javascript"><code class="javascript">X.App({
+	ready: function(){
+		//application init
+	}
+});</code></pre>
 
+<h2 id="xview">X.View</h2>
 
+<p>x-ui의 가장 핵심이 되는 컴포넌트이다. X.View 는 컨테이너이며 다양한 html을 내포할 수 있다. 또한 X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 있다.</p>
 
+<pre class="javascript"><code class="javascript">var view = new X.View({
+	el: &quot;#id&quot;,
+	autoRender: true,
+	content: &quot;&lt;!-- someting html --&gt;&quot;
+});</code></pre>
 
-  
-    
-      
-      	
-      	<li><a href="/atom.xml">Atom Feed</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/example.html">Example</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/guide.html">Guide</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/history.html">History</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/index.html">x-ui</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li class="active"><a href="/pages.html" class="active">Pages</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/rss.xml">RSS Feed</a></li>
-      	
-      
-    
-  
-    
-      
-      	
-      	<li><a href="/sitemap.txt">Sitemap</a></li>
-      	
-      
-    
-  
+<pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;</code></pre>
 
+<h2 id="_">레이아웃 만들기</h2>
 
+<pre class="xml"><code class="xml">&lt;!-- header --&gt;
+&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;height: 100px;&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;
 
-</ul>
+&lt;!-- body --&gt;
+&lt;div data-ui=&quot;view&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;</code></pre>
 
+<pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot; data-layout=&quot;x&quot;&gt;
+	&lt;!-- left --&gt;
+	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+
+	&lt;!-- body --&gt;
+	&lt;div data-ui=&quot;view&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
   </div>
 </div>
 
