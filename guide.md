@@ -34,7 +34,31 @@ var view = new X.View({
 ```
 
 ## 레이아웃 만들기
-```html
+<div class="row">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="./images/layout01.png" width="200" height="170"/>
+	</div>
+	<div class="col-md-8">
+		{% highlight html %}
+<!-- header -->
+<div data-ui="view" data-flexible="false" style="height: 100px;">
+	<!-- someting html -->
+</div>
+
+<!-- body -->
+<div data-ui="view">
+	<!-- someting html -->
+</div>	
+		{% endhighlight %}
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="./images/layout02.png" width="200" height="170"/>
+	</div>
+	<div class="col-md-8">
+		{% highlight html %}
 <!-- header -->
 <div data-ui="view" data-flexible="false" style="height: 100px;">
 	<!-- someting html -->
@@ -44,11 +68,21 @@ var view = new X.View({
 <div data-ui="view">
 	<!-- someting html -->
 </div>
-```
 
-
-
-```html
+<!-- footer -->
+<div data-ui="view" data-flexible="false" style="height: 100px;">
+	<!-- someting html -->
+</div>
+		{% endhighlight %}
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="./images/layout03.png" width="200" height="170"/>
+	</div>
+	<div class="col-md-8">
+		{% highlight html %}
 <div data-ui="view" data-layout="x">
 	<!-- left -->
 	<div data-ui="view" data-flexible="false" style="width: 100px;">
@@ -60,4 +94,69 @@ var view = new X.View({
 		<!-- someting html -->
 	</div>
 </div>
-```
+		{% endhighlight %}
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="./images/layout04.png" width="200" height="170"/>
+	</div>
+	<div class="col-md-8">
+		{% highlight html %}
+<div data-ui="view" data-layout="x">
+	<!-- left -->
+	<div data-ui="view" data-flexible="false" style="width: 100px;">
+		<!-- someting html -->
+	</div>
+
+	<!-- body -->
+	<div data-ui="view">
+		<!-- someting html -->
+	</div>
+
+	<!-- right -->
+	<div data-ui="view" data-flexible="false" style="width: 100px;">
+		<!-- someting html -->
+	</div>
+</div>
+		{% endhighlight %}
+	</div>
+</div>
+<hr />
+<div class="row">
+	<div class="col-md-4" style="text-align: center;">
+		<img src="./images/layout05.png" width="200" height="170"/>
+	</div>
+	<div class="col-md-8">
+		{% highlight html %}
+<!-- header -->
+<div data-ui="view" data-flexible="false" style="height: 100px;">
+	<!-- someting html -->
+</div>
+
+<div data-ui="view" data-layout="x">
+	<!-- left -->
+	<div data-ui="view" data-flexible="false" style="width: 100px;">
+		<!-- someting html -->
+	</div>
+
+	<!-- body -->
+	<div data-ui="view">
+		<!-- someting html -->
+	</div>
+
+	<!-- right -->
+	<div data-ui="view" data-flexible="false" style="width: 100px;">
+		<!-- someting html -->
+	</div>
+</div>
+
+<!-- footer -->
+<div data-ui="view" data-flexible="false" style="height: 100px;">
+	<!-- someting html -->
+</div>
+		{% endhighlight %}
+	</div>
+</div>
+

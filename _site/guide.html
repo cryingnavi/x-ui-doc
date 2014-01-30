@@ -127,28 +127,133 @@
 &lt;/div&gt;</code></pre>
 
 <h2 id="_">레이아웃 만들기</h2>
+<div class='row'>
+	<div class='col-md-4' style='text-align: center;'>
+		<img height='170' src='./images/layout01.png' width='200' />
+	</div>
+	<div class='col-md-8'>
+		
+<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- header --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
 
-<pre class="xml"><code class="xml">&lt;!-- header --&gt;
-&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;height: 100px;&quot;&gt;
-	&lt;!-- someting html --&gt;
-&lt;/div&gt;
+<span class='c'>&lt;!-- body --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>	
+		
+</code></pre></div>
 
-&lt;!-- body --&gt;
-&lt;div data-ui=&quot;view&quot;&gt;
-	&lt;!-- someting html --&gt;
-&lt;/div&gt;</code></pre>
+	</div>
+</div><hr /><div class='row'>
+	<div class='col-md-4' style='text-align: center;'>
+		<img height='170' src='./images/layout02.png' width='200' />
+	</div>
+	<div class='col-md-8'>
+		
+<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- header --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
 
-<pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot; data-layout=&quot;x&quot;&gt;
-	&lt;!-- left --&gt;
-	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
-		&lt;!-- someting html --&gt;
-	&lt;/div&gt;
+<span class='c'>&lt;!-- body --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
 
-	&lt;!-- body --&gt;
-	&lt;div data-ui=&quot;view&quot;&gt;
-		&lt;!-- someting html --&gt;
-	&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+<span class='c'>&lt;!-- footer --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+		
+</code></pre></div>
+
+	</div>
+</div><hr /><div class='row'>
+	<div class='col-md-4' style='text-align: center;'>
+		<img height='170' src='./images/layout03.png' width='200' />
+	</div>
+	<div class='col-md-8'>
+		
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-layout=</span><span class='s'>&quot;x&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- left --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+
+	<span class='c'>&lt;!-- body --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+		
+</code></pre></div>
+
+	</div>
+</div><hr /><div class='row'>
+	<div class='col-md-4' style='text-align: center;'>
+		<img height='170' src='./images/layout04.png' width='200' />
+	</div>
+	<div class='col-md-8'>
+		
+<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-layout=</span><span class='s'>&quot;x&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- left --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+
+	<span class='c'>&lt;!-- body --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+
+	<span class='c'>&lt;!-- right --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+		
+</code></pre></div>
+
+	</div>
+</div><hr /><div class='row'>
+	<div class='col-md-4' style='text-align: center;'>
+		<img height='170' src='./images/layout05.png' width='200' />
+	</div>
+	<div class='col-md-8'>
+		
+<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- header --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-layout=</span><span class='s'>&quot;x&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- left --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+
+	<span class='c'>&lt;!-- body --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+
+	<span class='c'>&lt;!-- right --&gt;</span>
+	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
+		<span class='c'>&lt;!-- someting html --&gt;</span>
+	<span class='nt'>&lt;/div&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+
+<span class='c'>&lt;!-- footer --&gt;</span>
+<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
+	<span class='c'>&lt;!-- someting html --&gt;</span>
+<span class='nt'>&lt;/div&gt;</span>
+		
+</code></pre></div>
+
+	</div>
+</div>
   </div>
 </div>
 
