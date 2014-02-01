@@ -177,5 +177,11 @@ var view = new X.View({
 <div data-ui="view" data-scroll="false" id="detail-container">
 	        
 </div>
+
+<script>
+X.util.cm.get("detail-container").setViewController(new X.util.RemoteViewController({
+	initPage: "a.html"
+}));
+</script>
 ```
 
