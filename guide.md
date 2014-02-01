@@ -186,7 +186,7 @@ X.util.cm.get("detail-container").setViewController(new X.util.RemoteViewControl
 ```
 
 ## 팝업
-view에는 floating 이라는 프로퍼티가 존재하며 이를 true로 설정하면 해당 view는 팝업으로서 동작하게 된다.
+view에는 floating 이라는 프로퍼티가 존재하며 이를 true로 설정하면 해당 view는 팝업으로서 동작하게 됩니다.
 
 ```javascript
 var view = new X.View({
