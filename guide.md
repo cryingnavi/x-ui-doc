@@ -185,3 +185,34 @@ X.util.cm.get("detail-container").setViewController(new X.util.RemoteViewControl
 </script>
 ```
 
+## 팝업
+view에는 floating 이라는 프로퍼티가 존재하며 이를 true로 설정하면 해당 view는 팝업으로서 동작하게 된다.
+
+```javascript
+var view = new X.View({
+	el: "#detail-container",
+	autoRender: true,
+	floating: true
+});
+
+//팝업 띄우기
+view.show();
+
+//팝업 감추기
+view.hide();
+```
+
+```html
+<div data-ui="view" data-floating="true" id="detail-container">
+	<!-- someting html -->
+</div>
+
+<script>
+//팝업 띄우기
+X.util.cm.get("detail-container").show();
+
+//팝업 감추기
+X.util.cm.get("detail-container").hide();
+</script>
+```
+
