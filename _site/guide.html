@@ -98,23 +98,96 @@
     </nav>
     <div class="container">
       
-<div class="page-header">
-  <h1>Guide </h1>
+<div class="col-md-3">
+  <ul class="nav">
+    <li>
+      <a href="#">Getting Started</a>
+      <ul>
+        <li>MarkUp</li>
+        <li>Include</li>
+        <li>Application 생성</li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">X.View</a>
+    </li>
+    <li>
+      <a href="#">레이아웃 만들기</a>
+    </li>
+    <li>
+      <a href="#">X.util.ViewController</a>
+    </li>
+    <li>
+      <a href="#">팝업</a>
+    </li>
+  </ul>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-      <h2 id="application_">Application 생성하기</h2>
+<div class="col-md-9">
+<h2 id="getting_started">Getting Started</h2>
+
+<p>이 문서는 x-ui 의 핵심 개념에 대해 설명합니다.</p>
+
+<h4 id="markup">MarkUp</h4>
+
+<pre class="xml"><code class="xml">&lt;!doctype html&gt;
+&lt;head&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;title&gt;Test Application&lt;/title&gt;
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;x-ui.css&quot; /&gt;
+	&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;x-ui-theme.css&quot; /&gt;
+
+	&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.10.2.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;x-ui-min.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot; src=&quot;x-scroll.js&quot;&gt;&lt;/script&gt;
+	&lt;script type=&quot;text/javascript&quot;&gt;
+		X.App({
+			ready: function(appView){
+				appView.setContent();
+			}
+		});
+	&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<h4 id="include">Include</h4>
+
+<pre class="xml"><code class="xml">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;x-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;x-ui-theme.css&quot; /&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;jquery-1.10.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;x-ui-min.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;x-scroll.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+<ul>
+<li>x-ui.css, x-ui-theme.css 등의 관련 css를 include 한다.</li>
+
+<li>jquery-1.10.2.min.js, x-ui-min.js, x-scroll.js 를 include 한다.</li>
+</ul>
+
+<h4 id="application_">Application 생성</h4>
 
 <pre class="javascript"><code class="javascript">X.App({
-	ready: function(){
+	ready: function(appView){
 		//application init
+		appView.setContent();
 	}
 });</code></pre>
 
+<p>X.App 는 어플리케이션에 대한 생성 정보를 기술하는 method 이다. 상세 프로퍼티들은 다음 url 에서 확인할 수 있다.</p>
+
+<p><a href="/assets/x-ui-1.1.1/doc/X.html#toc8">X.App</a></p>
+
+<p><code>appView</code> 는 X.App 에 의해 최상위 body를 대상으로 생성한 <code>X.View</code>의 인스턴스의 참조를 담고 있다. 해당 view 객체의 setContent() method 를 호출하여 body 의 자식 태그들 중 data-ui 를 기술한 div를 읽어 해당 컴포넌트로 자동 생성한다.</p>
+<hr />
 <h2 id="xview">X.View</h2>
 
-<p>x-ui의 가장 핵심이 되는 컴포넌트이다. X.View 는 컨테이너이며 다양한 html을 내포할 수 있다. 또한 X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 있다.</p>
+<p>x-ui의 가장 핵심이 되는 컴포넌트이다. X.View 는 대부분의 x-ui 컴포넌트의 상위 클래스이며 또한 컨테이너로서 다양한 html을 내포할 수 있다. 또한 X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 있다.</p>
+
+<p><a href="/assets/x-ui-1.1.1/doc/X.View.html">X.View</a></p>
 
 <pre class="javascript"><code class="javascript">var view = new X.View({
 	el: &quot;#id&quot;,
@@ -125,138 +198,160 @@
 <pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot;&gt;
 	&lt;!-- someting html --&gt;
 &lt;/div&gt;</code></pre>
-
+<hr />
 <h2 id="_">레이아웃 만들기</h2>
-<div class='row'>
-	<div class='col-md-4' style='text-align: center;'>
-		<img height='170' src='./images/layout01.png' width='200' />
-	</div>
-	<div class='col-md-8'>
-		
-<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- header --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
 
-<span class='c'>&lt;!-- body --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>	
-		
-</code></pre></div>
+<p>X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 있다. 레이아웃을 만드는데 필요한 속성은 <code>data-layout</code> 와 <code>data-flexible</code> 두 속성이다.</p>
 
-	</div>
-</div><hr /><div class='row'>
-	<div class='col-md-4' style='text-align: center;'>
-		<img height='170' src='./images/layout02.png' width='200' />
-	</div>
-	<div class='col-md-8'>
-		
-<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- header --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
+<ol>
+<li>헤더 / 바디</li>
+</ol>
 
-<span class='c'>&lt;!-- body --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
+<p><img height='170' src='./images/layout01.png' width='200' /></p>
 
-<span class='c'>&lt;!-- footer --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
-		
-</code></pre></div>
+<pre class="xml"><code class="xml">&lt;!-- header --&gt;
+&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;height: 100px;&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;
 
-	</div>
-</div><hr /><div class='row'>
-	<div class='col-md-4' style='text-align: center;'>
-		<img height='170' src='./images/layout03.png' width='200' />
-	</div>
-	<div class='col-md-8'>
-		
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-layout=</span><span class='s'>&quot;x&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- left --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
+&lt;!-- body --&gt;
+&lt;div data-ui=&quot;view&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;	</code></pre>
 
-	<span class='c'>&lt;!-- body --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
-		
-</code></pre></div>
+<ol>
+<li>헤더 / 바디 / 풋터</li>
+</ol>
 
-	</div>
-</div><hr /><div class='row'>
-	<div class='col-md-4' style='text-align: center;'>
-		<img height='170' src='./images/layout04.png' width='200' />
-	</div>
-	<div class='col-md-8'>
-		
-<div class='highlight'><pre><code class='html'><span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-layout=</span><span class='s'>&quot;x&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- left --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
+<p><img height='170' src='./images/layout02.png' width='200' /></p>
 
-	<span class='c'>&lt;!-- body --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
+<pre class="xml"><code class="xml">&lt;!-- header --&gt;
+&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;height: 100px;&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;
 
-	<span class='c'>&lt;!-- right --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
-		
-</code></pre></div>
+&lt;!-- body --&gt;
+&lt;div data-ui=&quot;view&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;
 
-	</div>
-</div><hr /><div class='row'>
-	<div class='col-md-4' style='text-align: center;'>
-		<img height='170' src='./images/layout05.png' width='200' />
-	</div>
-	<div class='col-md-8'>
-		
-<div class='highlight'><pre><code class='html'><span class='c'>&lt;!-- header --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
+&lt;!-- footer --&gt;
+&lt;div data-ui	</code></pre>
 
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-layout=</span><span class='s'>&quot;x&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- left --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
+<ol>
+<li>헤더 / 바디 / 풋터</li>
+</ol>
 
-	<span class='c'>&lt;!-- body --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
+<p><img height='170' src='./images/layout03.png' width='200' /></p>
 
-	<span class='c'>&lt;!-- right --&gt;</span>
-	<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;width: 100px;&quot;</span><span class='nt'>&gt;</span>
-		<span class='c'>&lt;!-- someting html --&gt;</span>
-	<span class='nt'>&lt;/div&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
+<pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot; data-layout=&quot;x&quot;&gt;
+	&lt;!-- left --&gt;
+	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
 
-<span class='c'>&lt;!-- footer --&gt;</span>
-<span class='nt'>&lt;div</span> <span class='na'>data-ui=</span><span class='s'>&quot;view&quot;</span> <span class='na'>data-flexible=</span><span class='s'>&quot;false&quot;</span> <span class='na'>style=</span><span class='s'>&quot;height: 100px;&quot;</span><span class='nt'>&gt;</span>
-	<span class='c'>&lt;!-- someting html --&gt;</span>
-<span class='nt'>&lt;/div&gt;</span>
-		
-</code></pre></div>
+	&lt;!-- body --&gt;
+	&lt;div data-ui=&quot;view&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
 
-	</div>
+<ol>
+<li>헤더 / 바디 / 풋터</li>
+</ol>
+
+<p><img height='170' src='./images/layout04.png' width='200' /></p>
+
+<pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot; data-layout=&quot;x&quot;&gt;
+	&lt;!-- left --&gt;
+	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+
+	&lt;!-- body --&gt;
+	&lt;div data-ui=&quot;view&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+
+	&lt;!-- right --&gt;
+	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+<ol>
+<li>헤더 / 바디 / 풋터</li>
+</ol>
+
+<p><img height='170' src='./images/layout05.png' width='200' /></p>
+
+<pre class="xml"><code class="xml">&lt;!-- header --&gt;
+&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;height: 100px;&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;
+
+&lt;div data-ui=&quot;view&quot; data-layout=&quot;x&quot;&gt;
+	&lt;!-- left --&gt;
+	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+
+	&lt;!-- body --&gt;
+	&lt;div data-ui=&quot;view&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+
+	&lt;!-- right --&gt;
+	&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;width: 100px;&quot;&gt;
+		&lt;!-- someting html --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- footer --&gt;
+&lt;div data-ui=&quot;view&quot; data-flexible=&quot;false&quot; style=&quot;height: 100px;&quot;&gt;
+	&lt;!-- someting html --&gt;
+&lt;/div&gt;</code></pre>
+<hr />
+<h2 id="xutilviewcontroller">X.util.ViewController</h2>
+
+<p>X.View 의 프로퍼티로 추가할 수 있는 util입니다. 해당 view의 화면 전환 및 히스토리를 관리하게 됩니다. 예를 들어 view의 내용을 a.html 의 내용으로 채우고 싶고 이를 다시 a.html -&gt; b.html 로 화면이 전환된다면 viewController를 선언하여 추가함을 써 이를 수행합니다.</p>
+
+<p>또한 View 에 ViewController 가 추가되면 view 자신이 내포하고 있는 html 중 링크 태그를 클릭하였을 경우 href로 명시된 url로 자동으로 페이지가 전환됩니다.</p>
+
+<p>전환시에는 애니메이션이 동작합니다.</p>
+
+<p><a href="/assets/x-ui-1.1.1/doc/X.util.ViewController.html">X.util.ViewController</a></p>
+
+<p>ViewController 는 하위로 다음 두 클래스를 가지고 있습니다.</p>
+
+<ul>
+<li>X.util.LocalViewController : 이미 생성된 view들 간의 전환</li>
+
+<li>X.util.RemoteViewController : 별도의 html 파일로의 전환</li>
+</ul>
+
+<h4 id="xutillocalviewcontroller">X.util.LocalViewController</h4>
+
+<p>이미 생성된 view 를 LocalViewController 에 등록하여 이들 간의 화면 전환을 담당합니다.</p>
+
+<pre class="javascript"><code class="javascript">var view = new X.View({
+	el: &quot;#detail-container&quot;,
+	autoRender: true,
+	viewController: new X.util.RemoteViewController({
+		initPage: &quot;a.html&quot;
+	})
+});</code></pre>
+
+<pre class="xml"><code class="xml">&lt;div data-ui=&quot;view&quot; data-scroll=&quot;false&quot; id=&quot;detail-container&quot;&gt;
+	        
+&lt;/div&gt;
+
+&lt;script&gt;
+X.util.cm.get(&quot;detail-container&quot;).setViewController(new X.util.RemoteViewController({
+	initPage: &quot;a.html&quot;
+}));
+&lt;/script&gt;</code></pre>
 </div>
-  </div>
-</div>
-
 
       <hr>
       <footer>
