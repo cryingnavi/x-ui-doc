@@ -5,7 +5,7 @@ X.View 의 프로퍼티로 추가할 수 있는 util입니다. 해당 view의 �
 
 전환시에는 애니메이션이 동작합니다.
 
-[X.util.ViewController](/assets/x-ui-1.0.3/doc/X.util.ViewController.html)
+[X.util.ViewController](./assets/x-ui-1.0.3/doc/X.util.ViewController.html)
 
 ViewController 는 하위로 다음 두 클래스를 가지고 있습니다.
 + X.util.LocalViewController : 이미 생성된 view들 간의 전환
