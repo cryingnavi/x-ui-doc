@@ -6,10 +6,8 @@ group: navigation
 ---
 {% include JB/setup %}
 
-## 1.1.1
+## 1.0.3
 + jquery mobile과 혼용하여 사용할 수 있도록 data-role 속성을 data-ui 형태로 변경. 
-
-## 1.1.0
 + grunt-jsdoc 설정 변경
 + CSS3 flex box 모델 도입
 + firefox, IE 11 대응
