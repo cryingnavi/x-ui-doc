@@ -1,12 +1,13 @@
 ## 레이아웃 만들기
 X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 있다. 레이아웃을 만드는데 필요한 속성은 `data-layout` 와 `data-flexible` 두 속성이다.
 
-1. 헤더 / 바디
++ Header / Body
+
 <img src="./images/layout01.png" width="200" height="170"/>
 
 ```html
 <!-- header -->
-<div data-ui="view" data-flexible="false" style="height: 100px;">
+<div data-ui="view" data-flexible="false" style="height: 60px;">
 	<!-- someting html -->
 </div>
 
@@ -16,13 +17,13 @@ X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 �
 </div>	
 ```
 
-2. 헤더 / 바디 / 풋터
++ Header / Body / Footer
 
 <img src="./images/layout02.png" width="200" height="170"/>
 
 ```html
 <!-- header -->
-<div data-ui="view" data-flexible="false" style="height: 100px;">
+<div data-ui="view" data-flexible="false" style="height: 60px;">
 	<!-- someting html -->
 </div>
 
@@ -32,11 +33,13 @@ X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 �
 </div>
 
 <!-- footer -->
-<div data-ui	
+<div data-ui="view" data-flexible="false" style="height: 60px;">
+	<!-- someting html -->
+</div>
 ```
 
 
-3. 헤더 / 바디 / 풋터
+3. Left / Body
 
 <img src="./images/layout03.png" width="200" height="170"/>
 
@@ -55,7 +58,7 @@ X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 �
 ```
 
 
-4. 헤더 / 바디 / 풋터
+4. Left / Body / Right
 
 <img src="./images/layout04.png" width="200" height="170"/>
 
@@ -79,7 +82,7 @@ X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 �
 ```
 
 
-5. 헤더 / 바디 / 풋터
+5. Header / Body / Footer / Left / Right
 
 <img src="./images/layout05.png" width="200" height="170"/>
 
