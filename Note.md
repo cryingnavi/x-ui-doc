@@ -1,6 +1,6 @@
 ---
 layout: page
-title : History
+title : Note
 header : Post Archive
 group: navigation
 ---
@@ -25,3 +25,6 @@ group: navigation
 
 ## 1.0.0
 + 프로젝트 첫 릴리즈
+
+## 문제점
++ 화면 전환을 담당하는 viewController 는 URL 과 연계하여 사용할 수 없으므로 이에 대한 보강이 필요함.
