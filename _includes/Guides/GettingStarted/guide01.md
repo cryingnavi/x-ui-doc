@@ -1,8 +1,8 @@
-## Getting Started
+## Getting Started (#gettingstart)
 이 문서는 x-ui 의 핵심 개념에 대해 설명합니다.
 
 
-#### MarkUp
+#### MarkUp (#markup)
 ```html
 <!doctype html>
 <head>
@@ -29,7 +29,7 @@
 ```
 
 
-#### Include
+#### Include (#include)
 ```html
 <link rel="stylesheet" type="text/css" href="x-ui.css" />
 <link rel="stylesheet" type="text/css" href="x-ui-theme.css" />
@@ -42,7 +42,7 @@
 + jquery-1.10.2.min.js, x-ui-min.js, x-scroll.js 를 include 한다.
 
 
-#### Application 생성
+#### Application 생성 (#application)
 ```javascript
 X.App({
 	ready: function(appView){
