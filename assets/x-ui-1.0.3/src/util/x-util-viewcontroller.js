@@ -164,50 +164,66 @@ X.util.ViewController = X.extend(X.util.Observer, {
 	init: function(view){
 		this.view = view;
 	},
-	transitionStart: function(fromView, toView, transition, reverse){
-		var deferred = new $.Deferred();
+	fromStart: function (fromView, transition, reverse, fn) {
+		var fel = null;
 
-		function transitionHandler(fromView, toView, transition, reverse){
-			var viewIn = function(){
-			    var tel = null,
-			        fel = null;
+		fel = fromView.getEl();
+		fel.addClass(transition + ' out ' + reverse + ' ui-transitioning');
 
-				tel = toView.getEl();
-				tel.addClass(transition + ' in ' + reverse + ' ui-transitioning ui-vc-active').removeClass('ui-view-hide');
-
-				fel = fromView.getEl();
-				fel.addClass(transition + ' out ' + reverse + ' ui-transitioning');
-
-				if(transition !== 'none'){
-					tel.animationComplete(viewOut);
-				}
-				else{
-					viewOut();
-				}
-			},
-			viewOut = function(){
-			    var tel = null,
-			        fel = null;
-			        
-				tel = toView.getEl();
-				tel.removeClass(transition + ' in ' + reverse + ' ui-transitioning');
-
-				fel = fromView.getEl();
-				fel.removeClass(transition + ' out ' + reverse + ' ui-transitioning ui-vc-active');
-
-				done();
-			},
-			done = function(){
-				fromView.hide();
-				deferred.resolve(this, [fromView, toView]);
-
-				fromView = null, toView = null, transition = null, reverse = null;
-			};
-
-			viewIn();
+		if(transition !== 'none' && fn){
+			fel.animationComplete(fn);
 		}
+		else if(fn){
+			fn();
+		}
+	},
+	toStart: function(toView, transition, reverse, fn){
+		var tel = null;
 
-		transitionHandler(fromView, toView, transition, reverse);
+		tel = toView.getEl();
+		tel.addClass(transition + ' in ' + reverse + ' ui-transitioning ui-vc-active').removeClass('ui-view-hide');
+
+		if(transition !== 'none' && fn){
+			tel.animationComplete(fn);
+		}
+		else if(fn){	
+			fn();
+		}
+	},
+	done: function(fromView, toView, transition, reverse, deferred){
+		var tel = null,
+	        fel = null;
+	        
+		tel = toView.getEl();
+		tel.removeClass(transition + ' in ' + reverse + ' ui-transitioning');
+
+		fel = fromView.getEl();
+		fel.removeClass(transition + ' out ' + reverse + ' ui-transitioning ui-vc-active');
+
+		fromView.hide();
+		deferred.resolve(this, [fromView, toView]);
+	},
+	transitionStart: function(fromView, toView, transition, reverse){
+		var deferred = new $.Deferred(),
+			transitionHandler = null;
+
+		if(transition !== 'flow'){
+			this.fromStart(fromView, transition, reverse);			
+			this.toStart(toView, transition, reverse, $.proxy(function(){
+				this.done(fromView, toView, transition, reverse, deferred);
+
+				fromView = null, toView = null, transition = null, reverse = null, deferred = null;
+			}, this));
+		}
+		else{
+			this.fromStart(fromView, transition, reverse, $.proxy(function(){
+				this.toStart(toView, transition, reverse, $.proxy(function(){
+					this.done(fromView, toView, transition, reverse, deferred);
+
+					fromView = null, toView = null, transition = null, reverse = null, deferred = null;
+				}, this));
+			}, this));
+		}
 		
 		return deferred;
 	},
@@ -219,7 +235,6 @@ X.util.ViewController = X.extend(X.util.Observer, {
 			transition: this.config.transition,
 			reverse: 'reverse'
 		}, config);
-
 	
 		if(!X.util.vcm.transition){
 			config.transition = 'none';

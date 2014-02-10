@@ -1,6 +1,6 @@
 X.util.ElementManager = X.util.em = {
 	id: 'x-ui-',
-	index: 1000,
+	index: 1,
 	get: function(selector){
 		if(selector){
 			var type = X.type(selector);

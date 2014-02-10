@@ -9,7 +9,7 @@
  * version: 1.0.3
  * repository: git://github.com/cryingnavi/x-ui.git
  * contact: cryingnavi@gmail.com
- * Date: 2014-02-09 12:02 
+ * Date: 2014-02-10 04:02 
  */
 /**
  * X namespace
@@ -433,7 +433,7 @@ X.util.Observer.prototype.fire = X.util.Observer.prototype.fireEvent;
 
 X.util.ElementManager = X.util.em = {
 	id: 'x-ui-',
-	index: 1000,
+	index: 1,
 	get: function(selector){
 		if(selector){
 			var type = X.type(selector);
@@ -706,50 +706,66 @@ X.util.ViewController = X.extend(X.util.Observer, {
 	init: function(view){
 		this.view = view;
 	},
-	transitionStart: function(fromView, toView, transition, reverse){
-		var deferred = new $.Deferred();
+	fromStart: function (fromView, transition, reverse, fn) {
+		var fel = null;
 
-		function transitionHandler(fromView, toView, transition, reverse){
-			var viewIn = function(){
-			    var tel = null,
-			        fel = null;
+		fel = fromView.getEl();
+		fel.addClass(transition + ' out ' + reverse + ' ui-transitioning');
 
-				tel = toView.getEl();
-				tel.addClass(transition + ' in ' + reverse + ' ui-transitioning ui-vc-active').removeClass('ui-view-hide');
-
-				fel = fromView.getEl();
-				fel.addClass(transition + ' out ' + reverse + ' ui-transitioning');
-
-				if(transition !== 'none'){
-					tel.animationComplete(viewOut);
-				}
-				else{
-					viewOut();
-				}
-			},
-			viewOut = function(){
-			    var tel = null,
-			        fel = null;
-			        
-				tel = toView.getEl();
-				tel.removeClass(transition + ' in ' + reverse + ' ui-transitioning');
-
-				fel = fromView.getEl();
-				fel.removeClass(transition + ' out ' + reverse + ' ui-transitioning ui-vc-active');
-
-				done();
-			},
-			done = function(){
-				fromView.hide();
-				deferred.resolve(this, [fromView, toView]);
-
-				fromView = null, toView = null, transition = null, reverse = null;
-			};
-
-			viewIn();
+		if(transition !== 'none' && fn){
+			fel.animationComplete(fn);
 		}
+		else if(fn){
+			fn();
+		}
+	},
+	toStart: function(toView, transition, reverse, fn){
+		var tel = null;
 
-		transitionHandler(fromView, toView, transition, reverse);
+		tel = toView.getEl();
+		tel.addClass(transition + ' in ' + reverse + ' ui-transitioning ui-vc-active').removeClass('ui-view-hide');
+
+		if(transition !== 'none' && fn){
+			tel.animationComplete(fn);
+		}
+		else if(fn){	
+			fn();
+		}
+	},
+	done: function(fromView, toView, transition, reverse, deferred){
+		var tel = null,
+	        fel = null;
+	        
+		tel = toView.getEl();
+		tel.removeClass(transition + ' in ' + reverse + ' ui-transitioning');
+
+		fel = fromView.getEl();
+		fel.removeClass(transition + ' out ' + reverse + ' ui-transitioning ui-vc-active');
+
+		fromView.hide();
+		deferred.resolve(this, [fromView, toView]);
+	},
+	transitionStart: function(fromView, toView, transition, reverse){
+		var deferred = new $.Deferred(),
+			transitionHandler = null;
+
+		if(transition !== 'flow'){
+			this.fromStart(fromView, transition, reverse);			
+			this.toStart(toView, transition, reverse, $.proxy(function(){
+				this.done(fromView, toView, transition, reverse, deferred);
+
+				fromView = null, toView = null, transition = null, reverse = null, deferred = null;
+			}, this));
+		}
+		else{
+			this.fromStart(fromView, transition, reverse, $.proxy(function(){
+				this.toStart(toView, transition, reverse, $.proxy(function(){
+					this.done(fromView, toView, transition, reverse, deferred);
+
+					fromView = null, toView = null, transition = null, reverse = null, deferred = null;
+				}, this));
+			}, this));
+		}
 		
 		return deferred;
 	},
@@ -761,7 +777,6 @@ X.util.ViewController = X.extend(X.util.Observer, {
 			transition: this.config.transition,
 			reverse: 'reverse'
 		}, config);
-
 	
 		if(!X.util.vcm.transition){
 			config.transition = 'none';
@@ -3858,43 +3873,66 @@ X.ui.Tabs = X.extend(X.View, {
 			this.left(fromView, toView);
 		}
 	},
-	transitionStart: function(fromView, toView, transition, reverse){
-		var deferred = new $.Deferred();
+	fromStart: function (fromView, transition, reverse, fn) {
+		var fel = null;
 
-		function transitionHandler(fromView, toView, transition, reverse){
-			var viewIn = function(){
-				var tel = toView.getEl();
-				tel.addClass(transition + ' in ' + reverse + ' ui-transitioning').removeClass('ui-view-hide');
+		fel = fromView.getEl();
+		fel.addClass(transition + ' out ' + reverse + ' ui-transitioning');
 
-				var fel = fromView.getEl();
-				fel.addClass(transition + ' out ' + reverse + ' ui-transitioning');
-
-				if(transition !== 'none'){
-					tel.animationComplete(viewOut);	
-				}
-				else{
-					viewOut();
-				}
-			},
-			viewOut = function(){
-				var tel = toView.getEl();
-				tel.removeClass(transition + ' in ' + reverse + ' ui-transitioning');
-
-				var fel = fromView.getEl();
-				fel.removeClass(transition + ' out ' + reverse + ' ui-transitioning');
-				
-				done();
-			},
-			done = function(){
-				deferred.resolve(this, [fromView, toView]);
-
-				fromView = null, toView = null, transition = null, reverse = null;
-			};
-
-			viewIn();
+		if(transition !== 'none' && fn){
+			fel.animationComplete(fn);
 		}
+		else if(fn){
+			fn();
+		}
+	},
+	toStart: function(toView, transition, reverse, fn){
+		var tel = null;
 
-		transitionHandler(fromView, toView, transition, reverse);
+		tel = toView.getEl();
+		tel.addClass(transition + ' in ' + reverse + ' ui-transitioning ui-vc-active').removeClass('ui-view-hide');
+
+		if(transition !== 'none' && fn){
+			tel.animationComplete(fn);
+		}
+		else if(fn){	
+			fn();
+		}
+	},
+	done: function(fromView, toView, transition, reverse, deferred){
+		var tel = null,
+	        fel = null;
+	        
+		tel = toView.getEl();
+		tel.removeClass(transition + ' in ' + reverse + ' ui-transitioning');
+
+		fel = fromView.getEl();
+		fel.removeClass(transition + ' out ' + reverse + ' ui-transitioning ui-vc-active');
+
+		fromView.hide();
+		deferred.resolve(this, [fromView, toView]);
+	},
+	transitionStart: function(fromView, toView, transition, reverse){
+		var deferred = new $.Deferred(),
+			transitionHandler = null;
+
+		if(transition !== 'flow'){
+			this.fromStart(fromView, transition, reverse);			
+			this.toStart(toView, transition, reverse, $.proxy(function(){
+				this.done(fromView, toView, transition, reverse, deferred);
+
+				fromView = null, toView = null, transition = null, reverse = null, deferred = null;
+			}, this));
+		}
+		else{
+			this.fromStart(fromView, transition, reverse, $.proxy(function(){
+				this.toStart(toView, transition, reverse, $.proxy(function(){
+					this.done(fromView, toView, transition, reverse, deferred);
+
+					fromView = null, toView = null, transition = null, reverse = null, deferred = null;
+				}, this));
+			}, this));
+		}
 		
 		return deferred;
 	},
@@ -5892,7 +5930,7 @@ X.util.cm.addCString('switchbox', X.ui.SwitchBox);
      * @property {String} config.splash 스플래시 이미지를 지정한다. Defautl: null
      * @property {Boolean} config.viewport viewport 를 사용할지를 지정한다. Defautl: true
      * @property {String} config.statusbar statusbar 색상을 지정한다. <br/>
-     * @property {Function} config.readyapplication 생성이 준비되면 호출되는 함수를 지정한다.
+     * @property {Function} config.ready 생성이 준비되면 호출되는 함수를 지정한다.
      * @property {String} config.initialScale initialScale 을 지정한다. Default: 1
      * @property {Number} config.maximumScale maximumScale 을 지정한다. Default: 1
      * @property {Number} config.minimumScale minimumScale 을 지정한다. Default: 1
