@@ -7,6 +7,7 @@ group: navigation
 {% include JB/setup %}
 
 ## 1.0.3
++ flow, roll 애니메이션 변경
 + jquery mobile과 혼용하여 사용할 수 있도록 data-role 속성을 data-ui 형태로 변경. 
 + grunt-jsdoc 설정 변경
 + CSS3 flex box 모델 도입
