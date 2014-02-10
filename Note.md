@@ -29,3 +29,15 @@ group: navigation
 
 ## 문제점
 + 화면 전환을 담당하는 viewController 는 URL 과 연계하여 사용할 수 없으므로 이에 대한 보강이 필요함.
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47471253-1', 'cryingnavi.github.io');
+  ga('send', 'pageview');
+
+</script>

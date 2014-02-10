@@ -30,10 +30,13 @@ HTML 5, CSS 3 기반의 작은 UI FrameWork 입니다. 모바일 웹사이트 �
 <a class="btn btn-lg btn-primary" href="https://github.com/cryingnavi/x-ui/releases" role="button">Download</a>
 
 
-<!--
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
--->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47471253-1', 'cryingnavi.github.io');
+  ga('send', 'pageview');
+
+</script>
