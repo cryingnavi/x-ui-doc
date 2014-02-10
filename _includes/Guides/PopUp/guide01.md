@@ -1,4 +1,4 @@
-## [팝업](#popup)
+## 팝업 {#popup}
 팝업은 X.View 의 floating 프로퍼티를 true 로 설정함으로써 간단히 생성할 수 있다. 
 
 

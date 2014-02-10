@@ -1,4 +1,4 @@
-## Getting Started (#gettingstart)
+## Getting Started {#gettingstart}
 이 문서는 x-ui 의 핵심 개념에 대해 설명합니다.
 
 

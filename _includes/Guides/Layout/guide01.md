@@ -1,4 +1,4 @@
-## 레이아웃 만들기 (#layout)
+## 레이아웃 만들기 {#layout}
 X.View 들 간의 관계를 통해 다양한 레이아웃을 만들어 낼 수 있다. 레이아웃을 만드는데 필요한 속성은 `data-layout` 와 `data-flexible` 두 속성이다.
 
 + Header / Body
