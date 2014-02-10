@@ -13,3 +13,5 @@ group: navigation
 {% include Guides/Layout/guide01.md %}
 <hr />
 {% include Guides/X.util.ViewController/guide01.md %}
+<hr />
+{% include Guides/PopUp/guide01.md %}
