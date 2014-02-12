@@ -36,7 +36,7 @@ HTML 5, CSS 3 기반의 작은 UI FrameWork 입니다. 모바일 웹사이트 �
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-47471253-1', 'cryingnavi.github.io');
+  ga('create', 'UA-48019510-1', 'cryingnavi.github.io');
   ga('send', 'pageview');
 
 </script>
